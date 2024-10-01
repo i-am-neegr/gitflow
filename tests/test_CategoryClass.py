@@ -1,26 +1,23 @@
 import pytest
 
 from src.CategoryClass import Category
+from src.ProductClass import Product
 
 
 @pytest.fixture
 def category_example() -> Category:
+    phones = [Product(name="iphone11", price=5.99, quantity=5, description="iphone11"),
+              Product(name="iphone13", price=53.99, quantity=53, description="iphone13"),
+              Product(name="iphone16", price=6, quantity=6, description="iphone16"), ]
     return Category(
-        name="бытовая техника",
-        description="телефоны и электроника",
-        products=["iphone", "samsung"],
+        name="phones", description="бытовая техника", products=phones
     )
 
 
 def test_category(category_example):
-    assert category_example.name == "бытовая техника"
-    assert category_example.description == "телефоны и электроника"
-    assert category_example.products == ["iphone", "samsung"]
-
-
-def test_category_quantity(category_example):
-    assert len(category_example.products) == 2
-    category_example.products.append(
-        "xiaomi redmi bomba plomba 12221 super puper red blue white edition"
-    )
+    assert category_example.name == "phones"
+    assert category_example.description == "бытовая техника"
     assert len(category_example.products) == 3
+    assert category_example.category_count == 1
+    assert category_example.product_count == 3
+
