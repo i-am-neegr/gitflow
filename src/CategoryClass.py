@@ -5,6 +5,7 @@ class Category:
     """
     Category class. Attributes: name, description, products, count_category, count_products
     """
+
     name: str
     description: str
     products: list
