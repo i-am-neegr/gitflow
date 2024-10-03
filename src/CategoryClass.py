@@ -31,18 +31,3 @@ class Category:
     def add_product(self, product: Product):
         self.__products.append(product)
         Category.product_count += 1
-
-
-cat = Category(
-    name="phones",
-    description="бытовая техника",
-    products=[
-        Product(name="iphone11", price=5.99, quantity=5, description="iphone11"),
-        Product(name="iphone13", price=53.99, quantity=53, description="iphone13"),
-        Product(name="iphone16", price=6, quantity=6, description="iphone16"),
-    ],
-)
-cat.add_product(
-    Product(name="iphone19", price=5.99, quantity=9, description="iphone19")
-)
-print(cat.products)
