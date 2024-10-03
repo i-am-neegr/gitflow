@@ -17,6 +17,18 @@ def category_example() -> Category:
 def test_category(category_example):
     assert category_example.name == "phones"
     assert category_example.description == "бытовая техника"
-    assert len(category_example.products) == 3
-    assert category_example.category_count == 1
-    assert category_example.product_count == 3
+    assert category_example.products == (
+        "iphone11, 5.99. остаток: 5.\niphone13, 53.99. остаток: 53.\niphone16, 6. остаток: 6.\n"
+    )
+    assert category_example.category_count == 2
+    assert category_example.product_count == 4
+
+
+def test_add_product(category_example):
+    category_example.add_product(
+        Product(name="iphone19", price=5.99, quantity=9, description="iphone19")
+    )
+    assert category_example.products == (
+        "iphone11, 5.99. остаток: 5.\niphone13, 53.99. остаток: 53.\n"
+        "iphone16, 6. остаток: 6.\niphone19, 5.99. остаток: 9.\n"
+    )
