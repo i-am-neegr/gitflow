@@ -34,4 +34,4 @@ def test_add_product(category_example):
     )
 
 def test__str__(category_example: Category) -> None:
-    assert str(category_example) == "phones, количество продуктов: 3 шт.\n"
+    assert str(category_example) == "phones, количество продуктов: 4 шт.\n"
