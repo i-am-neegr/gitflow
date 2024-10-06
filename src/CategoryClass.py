@@ -16,11 +16,11 @@ class Category:
         self.name = name
         self.description = description
         self.__products = products
-        self.product_count += len(products)
+        Category.product_count += len(products)
         Category.category_count += 1
 
     def __str__(self) -> str:
-        return f"{self.name}, количество продуктов: {self.product_count} шт.\n"
+        return f"{self.name}, количество продуктов: {Category.product_count} шт.\n"
 
     @property
     def products(self):
