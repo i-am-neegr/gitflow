@@ -30,5 +30,8 @@ class Category:
         return product_list
 
     def add_product(self, product: Product):
-        self.__products.append(product)
-        Category.product_count += 1
+        if issubclass(product.__class__, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError
