@@ -61,7 +61,7 @@ class Smartphone(Product):
         self.color = color
 
     def __add__(self, other):
-        if isinstance(other, Smartphone):
+        if type(other) == self.__class__:
             res = super().__add__(other)
             return res
         else:
@@ -86,7 +86,7 @@ class LawnGrass(Product):
         self.color = color
 
     def __add__(self, other):
-        if isinstance(other, LawnGrass):
+        if type(other) == self.__class__:
             res = super().__add__(other)
             return res
         else:
