@@ -1,4 +1,41 @@
-class Product:
+from abc import ABC, abstractmethod
+
+from src.MixinProduct import MixinProduct
+
+
+class BaseProduct(ABC):
+
+    @abstractmethod
+    def __init__(
+        self, name: str, description: str, price: float, quantity: int
+    ) -> None:
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        pass
+
+    @abstractmethod
+    def __str__(self):
+        pass
+
+    @classmethod
+    @abstractmethod
+    def new_product(cls, data):
+        pass
+
+    @property
+    @abstractmethod
+    def price(self):
+        pass
+
+    @price.setter
+    @abstractmethod
+    def price(self, value):
+        pass
+
+
+class Product(MixinProduct, BaseProduct):
     """
     Product Class. Attributes: name, price, description, quantity
     """
@@ -13,6 +50,7 @@ class Product:
         self.__price = price
         self.description = description
         self.quantity = quantity
+        super().__init__(name, description, price, quantity)
 
     def __str__(self):
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт.\n"
@@ -61,7 +99,7 @@ class Smartphone(Product):
         self.color = color
 
     def __add__(self, other):
-        if type(other) == self.__class__:
+        if type(other) is self.__class__:
             res = super().__add__(other)
             return res
         else:
@@ -86,7 +124,7 @@ class LawnGrass(Product):
         self.color = color
 
     def __add__(self, other):
-        if type(other) == self.__class__:
+        if type(other) is self.__class__:
             res = super().__add__(other)
             return res
         else:
